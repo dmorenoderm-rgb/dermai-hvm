@@ -168,9 +168,24 @@ criterios = {
     "Psoriasis en placas": {
         "indicacion": "Psoriasis moderada-grave (PASI ≥10 o BSA ≥10% o DLQI ≥10) candidato a tratamiento sistémico.",
         "objetivo": "PASI-90 a las 16 semanas."
+    },
+    "Hidradenitis supurativa": {
+        "indicación": "Hidradenitis supurativa moderada-grave (Hurley II–III) con afectación inflamatoria activa y fracaso de tratamiento antibiótico sistémico convencional.",
+        "objetivo": "HiSCR (reducción ≥50% de abscesos y nódulos inflamatorios, sin aumento de abscesos ni fístulas) a las 12–16 semanas."
+    },
+    "Urticaria Crónica Espontánea": {
+        "Indicación: Urticaria crónica espontánea moderada-grave con mal control pese a antihistamínicos H1 a dosis altas (x4).",
+        "Objetivo": "UAS7 ≤6 (idealmente 0) a las 12–16 semanas."
+    },
+    "Alopecia Areata": {
+        "indicación": "Alopecia areata grave SALT ≥50 o afectación extensa del cuero cabelludo y/o cejas/pestañas, episodios de repoblación <8 años, y fracaso de tratamientos previos (tópicos, intralesionales, sistémico convencional).",
+        "objetivo": "Mejoría SALT ≤20 o reducción ≥50% del SALT a las 24–36 semanas."
+    },
+    "Vitíligo": {
+        "indicación": "Vitíligo no segmentario cérvicofacial con afectación extensa >10% de superficie corporal refractario a tratamientos tópicos convecnionales (corticoides tópicos potentes, inhibidores de calcineurina)." .
+        "objetivo": "Repigmentación ≥50% facial (F-VASI50] a las 24 semanas."
     }
-}
-
+    
 # ======================
 # FORMULARIO
 # ======================
