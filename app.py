@@ -232,25 +232,35 @@ if not df.empty:
                 conn.commit()
                 st.rerun()
 
-        # FARMACIA
-        if role == "Farmacia" and r["estado"] == "Pendiente Farmacia":
+# ======================
+# FARMACIA
+# ======================
+if role == "Farmacia":
 
-            comentario = st.text_input("Motivo (opcional)", key=f"far_{i}")
+    for i, r in df.iterrows():
 
-            col1, col2 = st.columns(2)
+        if "Pendiente Farmacia" not in str(r["estado"]):
+            continue
 
-            if col1.button("Dispensar", key=f"disp_{i}"):
-                c.execute(
-                    "UPDATE requests SET estado=?, fecha_farmacia=? WHERE id=?",
-                    ("Dispensado", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
-                )
-                conn.commit()
-                st.rerun()
+        st.write("---")
+        st.write(f"{r['paciente']} | {r['tratamiento']}")
 
-            if col2.button("No validado", key=f"rech_{i}"):
-                c.execute(
-                    "UPDATE requests SET estado=?, comentario=?, fecha_farmacia=? WHERE id=?",
-                    ("No validado", comentario, datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
-                )
-                conn.commit()
-                st.rerun()
+        comentario = st.text_input("Motivo (opcional)", key=f"far_{i}")
+
+        col1, col2 = st.columns(2)
+
+        if col1.button("Dispensar", key=f"disp_{i}"):
+            c.execute(
+                "UPDATE requests SET estado=?, fecha_farmacia=? WHERE id=?",
+                ("Dispensado", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
+            )
+            conn.commit()
+            st.rerun()
+
+        if col2.button("No validado", key=f"rech_{i}"):
+            c.execute(
+                "UPDATE requests SET estado=?, comentario=?, fecha_farmacia=? WHERE id=?",
+                ("No validado", comentario, datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
+            )
+            conn.commit()
+            st.rerun()
