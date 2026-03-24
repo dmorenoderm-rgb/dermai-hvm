@@ -182,8 +182,8 @@ if role == "Dermatólogo":
     solicitante = st.selectbox("Solicitante", solicitantes)
     enfermedad = st.selectbox("Enfermedad", list(protocolos.keys()))
     if enfermedad in criterios:
-    st.markdown(f"**Indicación:** {criterios[enfermedad]['indicacion']}")
-    st.markdown(f"**Objetivo terapéutico:** {criterios[enfermedad]['objetivo']}")
+        st.markdown(f"**Indicación:** {criterios[enfermedad]['indicacion']}")
+        st.markdown(f"**Objetivo terapéutico:** {criterios[enfermedad]['objetivo']}")
     if enfermedad in recomendaciones:
         st.info(f"📊 Recomendación: {recomendaciones[enfermedad]}")
     tratamiento = st.selectbox("Tratamiento", protocolos[enfermedad])
