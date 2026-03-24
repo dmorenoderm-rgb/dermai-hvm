@@ -192,14 +192,17 @@ if not df.empty:
             col1, col2 = st.columns(2)
 
             if col1.button("Validar", key=f"val_{i}"):
-                c.execute("UPDATE requests SET estado='Validado' WHERE id=?", (r["id"],))
+                c.execute(
+                    "UPDATE requests SET estado=?, fecha_director=? WHERE id=?",
+                    ("Validado", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
+                )
                 conn.commit()
                 st.rerun()
 
             if col2.button("No validado", key=f"noval_{i}"):
                 c.execute(
-                    "UPDATE requests SET estado=?, comentario=? WHERE id=?",
-                    ("Rechazado Director", comentario, r["id"])
+                    "UPDATE requests SET estado=?, comentario=?, fecha_director=? WHERE id=?",
+                    ("No validado", comentario, datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
                 )
                 conn.commit()
                 st.rerun()
