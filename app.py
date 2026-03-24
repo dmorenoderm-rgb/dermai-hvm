@@ -59,7 +59,9 @@ c.execute(
     "tratamiento TEXT,"
     "estado TEXT,"
     "comentario TEXT,"
-    "fecha TEXT)"
+    "fecha TEXT,"
+    "fecha_director TEXT,"
+    "fecha_farmacia TEXT)"
 )
 conn.commit()
 
