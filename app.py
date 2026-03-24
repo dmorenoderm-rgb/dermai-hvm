@@ -150,13 +150,13 @@ protocolos = {
 
 recomendaciones = {
     "Psoriasis en placas": "Adalimumab < Ustekinumab < Tildrakizumab < Bimekizumab",
-    "Dermatitis atópica": "Dupilumab < Tralokinumab < Lebrikizumab < JAK",
+    "Dermatitis atópica": "Dupilumab < Lebrikizumab < Upadacitinib",
     "Hidradenitis supurativa": "Adalimumab < Secukinumab < Bimekizumab",
-    "Urticaria crónica espontánea": "Omalizumab",
-    "Alopecia areata": "Baricitinib < Ritlecitinib",
+    "Urticaria crónica espontánea": "Omalizumab biosimilar",
+    "Alopecia areata": "Ritlecitinib",
     "Vitíligo": "Ruxolitinib crema",
-    "Melanoma": "Anti-PD1 (Nivolumab / Pembrolizumab)",
-    "Carcinoma basocelular": "Vismodegib < Sonidegib",
+    "Melanoma": "Anti-PD1 Pembrolizumab",
+    "Carcinoma basocelular": "Sonidegib < Vismodegib",
     "Carcinoma escamoso cutáneo": "Cemiplimab < Pembrolizumab",
 }
 
