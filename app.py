@@ -10,7 +10,7 @@ import re
 # ======================
 st.set_page_config(layout="wide")
 st.title("DerMAI PRO")
-st.write("Gestión de Medicamentos Dermatología")
+st.write("Gestión de Medicamentos de Alto Impacto en Dermatología")
 
 # ======================
 # LOGIN
@@ -25,7 +25,7 @@ if "user" not in st.session_state:
     st.session_state.user = None
 
 user = st.sidebar.text_input("Usuario")
-pwd = st.sidebar.text_input("Password", type="password")
+pwd = st.sidebar.text_input("Contraseña", type="password")
 
 if st.sidebar.button("Entrar"):
     if user in USERS and USERS[user]["pass"] == pwd:
@@ -38,19 +38,21 @@ if not st.session_state.user:
     st.stop()
 
 role = st.session_state.user["role"]
-st.sidebar.success(role)
+st.sidebar.success(f"Rol: {role}")
+
+if st.sidebar.button("Cerrar sesión"):
+    st.session_state.user = None
+    st.rerun()
 
 # ======================
-# DB (RESET LIMPIO)
+# DB (ESTABLE)
 # ======================
-conn = sqlite3.connect("data.db", check_same_thread=False)
+conn = sqlite3.connect("data.db")
 c = conn.cursor()
-
-c.execute("DROP TABLE IF EXISTS requests")
 
 c.execute(
     "CREATE TABLE IF NOT EXISTS requests ("
-    "id TEXT,"
+    "id TEXT PRIMARY KEY,"
     "paciente TEXT,"
     "solicitante TEXT,"
     "enfermedad TEXT,"
@@ -85,19 +87,48 @@ protocolos = {
     ],
     "Dermatitis atópica": [
         "Dupilumab 300 mg/2 semanas",
-        "Tralokinumab 300 mg",
+        "Tralokinumab 300 mg/2 semanas",
+        "Tralokinumab 300 mg/4 semanas",
+        "Lebrikizumab 250 mg/2 semanas",
+        "Lebrikizumab 250 mg/4 semanas",
         "Upadacitinib 15 mg",
+        "Upadacitinib 30 mg",
+        "Baricitinib 2 mg",
         "Baricitinib 4 mg",
+        "Abrocitinib 100 mg",
+        "Abrocitinib 200 mg",
     ],
     "Hidradenitis supurativa": [
         "Adalimumab semanal",
-        "Secukinumab 300 mg",
-        "Bimekizumab 320 mg",
+        "Secukinumab 300 mg/4 semanas",
+        "Bimekizumab 320 mg/4 semanas",
+    ],
+    "Urticaria crónica espontánea": [
+        "Omalizumab 300 mg/4 semanas"
+    ],
+    "Alopecia areata": [
+        "Baricitinib 2 mg",
+        "Baricitinib 4 mg",
+        "Ritlecitinib 50 mg",
+    ],
+    "Vitíligo": [
+        "Ruxolitinib crema 1,5%"
     ],
     "Melanoma": [
-        "Nivolumab",
-        "Pembrolizumab"
-    ]
+        "Nivolumab 240 mg/2 semanas",
+        "Nivolumab 480 mg/4 semanas",
+        "Pembrolizumab 200 mg/3 semanas",
+        "Pembrolizumab 400 mg/6 semanas",
+    ],
+    "Carcinoma basocelular": [
+        "Vismodegib 150 mg diario",
+        "Sonidegib 200 mg diario",
+    ],
+    "Carcinoma escamoso cutáneo": [
+        "Cemiplimab 350 mg/3 semanas",
+        "Pembrolizumab 200 mg/3 semanas",
+        "Pembrolizumab 400 mg/6 semanas",
+    ],
 }
 
 # ======================
@@ -112,7 +143,7 @@ if role == "Dermatólogo":
     enfermedad = st.selectbox("Enfermedad", list(protocolos.keys()))
     tratamiento = st.selectbox("Tratamiento", protocolos[enfermedad])
 
-    if st.button("Enviar"):
+    if st.button("Enviar solicitud"):
         if not re.fullmatch(r"AN\d{10}", paciente):
             st.error("Formato incorrecto")
         else:
@@ -134,15 +165,15 @@ if role == "Dermatólogo":
             st.rerun()
 
 # ======================
-# LISTADO
+# LISTADO (CLAVE)
 # ======================
-df = pd.read_sql_query("SELECT * FROM requests", conn)
-
 st.subheader("Solicitudes")
+
+df = pd.read_sql_query("SELECT * FROM requests ORDER BY fecha DESC", conn)
 
 if not df.empty:
 
-    st.dataframe(df[["paciente","solicitante","enfermedad","tratamiento","estado"]])
+    st.dataframe(df[["paciente","solicitante","enfermedad","tratamiento","estado"]], use_container_width=True)
 
     for i, r in df.iterrows():
 
@@ -162,8 +193,10 @@ if not df.empty:
                 st.rerun()
 
             if col2.button("No validado", key=f"noval_{i}"):
-                c.execute("UPDATE requests SET estado=?, comentario=? WHERE id=?",
-                          ("Rechazado Director", comentario, r["id"]))
+                c.execute(
+                    "UPDATE requests SET estado=?, comentario=? WHERE id=?",
+                    ("Rechazado Director", comentario, r["id"])
+                )
                 conn.commit()
                 st.rerun()
 
@@ -180,7 +213,9 @@ if not df.empty:
                 st.rerun()
 
             if col2.button("No validado", key=f"rech_{i}"):
-                c.execute("UPDATE requests SET estado=?, comentario=? WHERE id=?",
-                          ("Rechazado Farmacia", comentario, r["id"]))
+                c.execute(
+                    "UPDATE requests SET estado=?, comentario=? WHERE id=?",
+                    ("Rechazado Farmacia", comentario, r["id"])
+                )
                 conn.commit()
                 st.rerun()
