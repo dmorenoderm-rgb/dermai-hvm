@@ -221,24 +221,25 @@ st.dataframe(
 )
 
 # ======================
-# DESCARGAR EXCEL (SEGURO)
+# DESCARGAR EXCEL (SOLO DIRECTOR)
 # ======================
-import io
+if role == "Director":
 
-output = io.BytesIO()
+    import io
 
-with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-    df.to_excel(writer, index=False, sheet_name='Solicitudes')
+    output = io.BytesIO()
 
-excel_data = output.getvalue()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Solicitudes')
 
-st.download_button(
-    label="📥 Descargar Excel",
-    data=excel_data,
-    file_name="solicitudes_dermai.xlsx",
-    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-)
+    excel_data = output.getvalue()
 
+    st.download_button(
+        label="📥 Descargar Excel",
+        data=excel_data,
+        file_name="solicitudes_dermai.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 # ======================
 # ACCIONES
 # ======================
