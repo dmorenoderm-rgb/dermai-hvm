@@ -49,7 +49,7 @@ c = conn.cursor()
 c.execute("DROP TABLE IF EXISTS requests")
 
 c.execute(
-    "CREATE TABLE requests ("
+    "CREATE TABLE IF NOT EXISTS requests ("
     "id TEXT,"
     "paciente TEXT,"
     "solicitante TEXT,"
@@ -59,7 +59,6 @@ c.execute(
     "comentario TEXT,"
     "fecha TEXT)"
 )
-
 conn.commit()
 
 # ======================
