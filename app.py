@@ -220,7 +220,18 @@ df_display["estado_detalle"] = df_display.apply(
 )
 
 st.dataframe(
-    df_display[["paciente","solicitante","enfermedad","tratamiento","estado_detalle"]],
+    df_display[
+        [
+            "paciente",
+            "solicitante",
+            "enfermedad",
+            "tratamiento",
+            "estado_detalle",   # 👈 esto mantiene comentarios
+            "fecha",
+            "fecha_director",
+            "fecha_farmacia"
+        ]
+    ],
     use_container_width=True
 )
 
