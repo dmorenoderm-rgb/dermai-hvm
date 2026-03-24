@@ -66,6 +66,18 @@ CREATE TABLE IF NOT EXISTS requests (
 """)
 conn.commit()
 
+# 🔹 AÑADIR ESTO (CLAVE)
+c.execute("PRAGMA table_info(requests)")
+columnas = [col[1] for col in c.fetchall()]
+
+if "estado_director" not in columnas:
+    c.execute("ALTER TABLE requests ADD COLUMN estado_director TEXT DEFAULT 'Pendiente'")
+
+if "estado_farmacia" not in columnas:
+    c.execute("ALTER TABLE requests ADD COLUMN estado_farmacia TEXT DEFAULT ''")
+
+conn.commit()
+
 # ======================
 # DATOS
 # ======================
