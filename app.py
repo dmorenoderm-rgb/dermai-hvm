@@ -180,10 +180,21 @@ if not df.empty:
     st.dataframe(df[["paciente","solicitante","enfermedad","tratamiento","estado"]], use_container_width=True)
 
     for i, r in df.iterrows():
+    # Mostrar solo pendientes en zona de acción
+    if role == "Director" and r["estado"] != "Pendiente Director":
+    continue
 
+    if role == "Farmacia" and r["estado"] != "Validado":
+    continue
+    
         st.write("---")
         st.write(f"Paciente: {r['paciente']} | {r['tratamiento']} | Estado: {r['estado']}")
+        if r["fecha_director"]:
+            st.write(f"🩺 Validación Director: {r['fecha_director']}")
 
+        if r["fecha_farmacia"]:
+            st.write(f"💊 Farmacia: {r['fecha_farmacia']}")
+            
         # DIRECTOR
         if role == "Director" and r["estado"] == "Pendiente Director":
 
@@ -215,14 +226,17 @@ if not df.empty:
             col1, col2 = st.columns(2)
 
             if col1.button("Dispensar", key=f"disp_{i}"):
-                c.execute("UPDATE requests SET estado='Dispensado' WHERE id=?", (r["id"],))
+                c.execute(
+                    "UPDATE requests SET estado=?, fecha_farmacia=? WHERE id=?",
+                    ("Dispensado", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
+                )
                 conn.commit()
                 st.rerun()
 
             if col2.button("No validado", key=f"rech_{i}"):
                 c.execute(
-                    "UPDATE requests SET estado=?, comentario=? WHERE id=?",
-                    ("Rechazado Farmacia", comentario, r["id"])
+                    "UPDATE requests SET estado=?, comentario=?, fecha_farmacia=? WHERE id=?",
+                    ("No validado", comentario, datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
                 )
                 conn.commit()
                 st.rerun()
