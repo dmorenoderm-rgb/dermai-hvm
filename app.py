@@ -228,9 +228,8 @@ if role != "Dermatólogo":
         if r["fecha_farmacia"]:
             st.write(f"💊 Farmacia: {r['fecha_farmacia']}")
             
-        # DIRECTOR: solo ver pendientes reales
-        if role == "Director" and "Pendiente Director" not in str(r["estado"]):
-            continue
+        # DIRECTOR
+        if role == "Director" and r["estado"] == "Pendiente Director":
 
             comentario = st.text_input("Motivo (opcional)", key=f"dir_{i}")
 
