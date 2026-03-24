@@ -11,7 +11,7 @@ st.title("DerMAI PRO")
 # ======================
 # DB
 # ======================
-conn = sqlite3.connect("data.db", check_same_thread=False)
+conn = sqlite3.connect("data_v2.db", check_same_thread=False)
 c = conn.cursor()
 
 c.execute("""
