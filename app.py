@@ -50,8 +50,6 @@ if st.sidebar.button("Cerrar sesión"):
 conn = sqlite3.connect("data.db")
 c = conn.cursor()
 
-c.execute("DROP TABLE IF EXISTS requests")
-
 c.execute(
     "CREATE TABLE requests ("
     "id TEXT PRIMARY KEY,"
