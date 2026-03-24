@@ -174,7 +174,7 @@ criterios = {
         "objetivo": "HiSCR (reducción ≥50% de abscesos y nódulos inflamatorios, sin aumento de abscesos ni fístulas) a las 12–16 semanas."
     },
     "Urticaria Crónica Espontánea": {
-        "Indicación: Urticaria crónica espontánea moderada-grave con mal control pese a antihistamínicos H1 a dosis altas (x4).",
+        "Indicación": Urticaria crónica espontánea moderada-grave con mal control pese a antihistamínicos H1 a dosis altas (x4).",
         "Objetivo": "UAS7 ≤6 (idealmente 0) a las 12–16 semanas."
     },
     "Alopecia Areata": {
