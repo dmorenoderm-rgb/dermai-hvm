@@ -197,6 +197,7 @@ if not df.empty:
         "enfermedad",
         "tratamiento",
         "estado",
+        "fecha",
         "fecha_director",
         "fecha_farmacia"
     ]],
