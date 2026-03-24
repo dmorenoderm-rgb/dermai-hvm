@@ -190,7 +190,18 @@ df = pd.read_sql_query("SELECT * FROM requests ORDER BY fecha DESC", conn)
 
 if not df.empty:
 
-    st.dataframe(df[["paciente","solicitante","enfermedad","tratamiento","estado"]], use_container_width=True)
+    st.dataframe(
+    df[[
+        "paciente",
+        "solicitante",
+        "enfermedad",
+        "tratamiento",
+        "estado",
+        "fecha_director",
+        "fecha_farmacia"
+    ]],
+    use_container_width=True
+)
 
     for i, r in df.iterrows():
         
