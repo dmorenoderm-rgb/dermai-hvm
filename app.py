@@ -192,17 +192,17 @@ df = pd.read_sql_query("SELECT * FROM requests ORDER BY fecha DESC", conn)
 
 if not df.empty:
 
-    st.dataframe(
-    df[[
-        "paciente",
-        "solicitante",
-        "enfermedad",
-        "tratamiento",
-        "estado",
-        "fecha",
-        "fecha_director",
-        "fecha_farmacia"
-    ]],
+    df_display = df.copy()
+
+df_display["estado_detalle"] = df_display.apply(
+    lambda x: f"{x['estado']} ({x['comentario']})"
+    if x["estado"] == "No validado" and x["comentario"]
+    else x["estado"],
+    axis=1
+)
+
+st.dataframe(
+    df_display[["paciente","solicitante","enfermedad","tratamiento","estado_detalle"]],
     use_container_width=True
 )
 
