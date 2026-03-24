@@ -122,7 +122,17 @@ if role == "Dermatólogo":
             st.error("Formato incorrecto")
         else:
             c.execute("""
-            INSERT INTO requests VALUES (?,?,?,?,?,?,?, ?,?)
+            INSERT INTO requests (
+                id,
+                paciente,
+                solicitante,
+                enfermedad,
+                tratamiento,
+                estado,
+                fecha,
+                fecha_director,
+                fecha_farmacia
+            ) VALUES (?,?,?,?,?,?,?,?,?)
             """, (
                 str(uuid.uuid4()),
                 paciente.strip().upper(),
@@ -134,9 +144,6 @@ if role == "Dermatólogo":
                 "",
                 ""
             ))
-            conn.commit()
-            st.success("Solicitud creada")
-            st.rerun()
 
 # ======================
 # ESTADO
