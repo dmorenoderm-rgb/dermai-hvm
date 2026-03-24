@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 st.title("DerMAI PRO")
 
 # ======================
-# DB LIMPIA Y ESTABLE
+# DB
 # ======================
 conn = sqlite3.connect("data.db", check_same_thread=False)
 c = conn.cursor()
@@ -30,50 +30,77 @@ CREATE TABLE IF NOT EXISTS requests (
 conn.commit()
 
 # ======================
-# LOGIN
+# LOGIN SIMPLE
 # ======================
-USERS = {
-    "derma": "Dermatólogo",
-    "director": "Director",
-    "farmacia": "Farmacia"
-}
+roles = ["Dermatólogo", "Director", "Farmacia"]
+role = st.sidebar.selectbox("Acceso", roles)
 
-user = st.sidebar.selectbox("Usuario", list(USERS.keys()))
-role = USERS[user]
+if role in ["Director", "Farmacia"]:
+    password = st.sidebar.text_input("Contraseña", type="password")
+    if password != "123":
+        st.warning("Acceso restringido")
+        st.stop()
 
-st.sidebar.write(f"Rol: {role}")
+# ======================
+# SOLICITANTES
+# ======================
+solicitantes = [
+    "Dra. Carrizosa","Dra. Conejo-Mir","Dr. de la Torre","Dra. Eiris",
+    "Dra. Fernández Orland","Dra. Ferrándiz","Dra. García Morales",
+    "Dr. Marcos","Dra. Ojeda","Dr. Ruiz de Casas","Dra. Ruz",
+    "Dra. Sánchez del Campo","Dr. Sánchez Leiro","Dra. Serrano"
+]
 
 # ======================
 # PROTOCOLOS COMPLETOS
 # ======================
 protocolos = {
     "Psoriasis en placas": [
-        "Adalimumab",
-        "Ustekinumab",
-        "Secukinumab",
-        "Ixekizumab",
-        "Guselkumab",
-        "Risankizumab",
-        "Tildrakizumab",
-        "Bimekizumab"
+        "Adalimumab 40 mg/2 semanas",
+        "Ustekinumab 45 mg/12 semanas",
+        "Ustekinumab 90 mg/12 semanas",
+        "Secukinumab 300 mg/4 semanas",
+        "Ixekizumab 80 mg/4 semanas",
+        "Guselkumab 100 mg/8 semanas",
+        "Risankizumab 150 mg/12 semanas",
+        "Tildrakizumab 100 mg/12 semanas",
+        "Bimekizumab 320 mg/8 semanas"
     ],
     "Dermatitis atópica": [
-        "Dupilumab",
-        "Tralokinumab",
-        "Upadacitinib",
-        "Baricitinib"
+        "Dupilumab 300 mg/2 semanas",
+        "Tralokinumab 300 mg/2 semanas",
+        "Lebrikizumab 250 mg/2 semanas",
+        "Upadacitinib 15 mg",
+        "Upadacitinib 30 mg",
+        "Baricitinib 2 mg",
+        "Baricitinib 4 mg"
     ],
     "Hidradenitis supurativa": [
-        "Adalimumab",
-        "Secukinumab",
-        "Bimekizumab"
+        "Adalimumab semanal",
+        "Secukinumab 300 mg",
+        "Bimekizumab 320 mg"
+    ],
+    "Urticaria crónica espontánea": [
+        "Omalizumab 300 mg"
     ],
     "Alopecia areata": [
-        "Baricitinib",
-        "Ritlecitinib"
+        "Baricitinib 2 mg",
+        "Baricitinib 4 mg",
+        "Ritlecitinib 50 mg"
+    ],
+    "Vitíligo": [
+        "Ruxolitinib crema"
     ],
     "Melanoma": [
         "Nivolumab",
+        "Pembrolizumab"
+    ],
+    "Carcinoma basocelular": [
+        "Vismodegib",
+        "Sonidegib"
+    ],
+    "Carcinoma escamoso cutáneo": [
+        "Cemiplimab",
         "Pembrolizumab"
     ]
 }
@@ -86,7 +113,7 @@ if role == "Dermatólogo":
     st.subheader("Nueva solicitud")
 
     paciente = st.text_input("Paciente (AN + 10 dígitos)", value="AN")
-    solicitante = st.text_input("Solicitante")
+    solicitante = st.selectbox("Solicitante", solicitantes)
     enfermedad = st.selectbox("Enfermedad", list(protocolos.keys()))
     tratamiento = st.selectbox("Tratamiento", protocolos[enfermedad])
 
@@ -112,7 +139,7 @@ if role == "Dermatólogo":
             st.rerun()
 
 # ======================
-# ESTADO CLARO
+# ESTADO
 # ======================
 def estado(r):
     if r["estado"] == "Pendiente Director":
@@ -143,7 +170,7 @@ if not df.empty:
     )
 
 # ======================
-# ACCIONES (SIN DUPLICADOS)
+# ACCIONES
 # ======================
 st.subheader("Acciones")
 
@@ -194,7 +221,6 @@ for i, r in df.iterrows():
             conn.commit()
             st.rerun()
 
-    # FECHAS
     if r["fecha_director"]:
         st.write(f"Director: {r['fecha_director']}")
     if r["fecha_farmacia"]:
