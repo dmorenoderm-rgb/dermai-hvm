@@ -153,10 +153,7 @@ if role == "Dermatólogo":
 
     st.subheader("Nueva solicitud")
 
-    prefijo = "AN"
-    numero = st.text_input("Paciente (10 dígitos)", max_chars=10)
-
-    paciente = prefijo + numero if numero else ""
+    paciente = st.text_input("Paciente (AN + 10 dígitos)")
     solicitante = st.selectbox("Solicitante", solicitantes)
     enfermedad = st.selectbox("Enfermedad", list(protocolos.keys()))
     tratamiento = st.selectbox("Tratamiento", protocolos[enfermedad])
