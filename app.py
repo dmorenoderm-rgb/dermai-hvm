@@ -5,6 +5,9 @@ from datetime import datetime
 import pandas as pd
 import re
 
+# ======================
+# CONFIG
+# ======================
 st.set_page_config(layout="wide")
 st.title("DerMAI PRO")
 st.write("Gestión de Medicamentos Dermatología")
@@ -29,7 +32,7 @@ if st.sidebar.button("Entrar"):
         st.session_state.user = USERS[user]
         st.rerun()
     else:
-        st.error("Login incorrecto")
+        st.sidebar.error("Login incorrecto")
 
 if not st.session_state.user:
     st.stop()
@@ -38,26 +41,24 @@ role = st.session_state.user["role"]
 st.sidebar.success(role)
 
 # ======================
-# DB
+# DB (RESET LIMPIO)
 # ======================
 conn = sqlite3.connect("data.db", check_same_thread=False)
 c = conn.cursor()
 
-c.execute("""
 c.execute("DROP TABLE IF EXISTS requests")
 
-c.execute("""
-CREATE TABLE requests (
-id TEXT,
-paciente TEXT,
-solicitante TEXT,
-enfermedad TEXT,
-tratamiento TEXT,
-estado TEXT,
-comentario TEXT,
-fecha TEXT
+c.execute(
+    "CREATE TABLE requests ("
+    "id TEXT,"
+    "paciente TEXT,"
+    "solicitante TEXT,"
+    "enfermedad TEXT,"
+    "tratamiento TEXT,"
+    "estado TEXT,"
+    "comentario TEXT,"
+    "fecha TEXT)"
 )
-""")
 
 conn.commit()
 
@@ -144,9 +145,6 @@ if not df.empty:
 
     st.dataframe(df[["paciente","solicitante","enfermedad","tratamiento","estado"]])
 
-    # ======================
-    # ACCIONES
-    # ======================
     for i, r in df.iterrows():
 
         st.write("---")
@@ -155,13 +153,12 @@ if not df.empty:
         # DIRECTOR
         if role == "Director" and r["estado"] == "Pendiente Director":
 
-            comentario = st.text_input("Motivo (opcional)", key=f"c_dir_{i}")
+            comentario = st.text_input("Motivo (opcional)", key=f"dir_{i}")
 
             col1, col2 = st.columns(2)
 
             if col1.button("Validar", key=f"val_{i}"):
-                c.execute("UPDATE requests SET estado=? WHERE id=?",
-                          ("Validado", r["id"]))
+                c.execute("UPDATE requests SET estado='Validado' WHERE id=?", (r["id"],))
                 conn.commit()
                 st.rerun()
 
@@ -174,13 +171,12 @@ if not df.empty:
         # FARMACIA
         if role == "Farmacia" and r["estado"] == "Validado":
 
-            comentario = st.text_input("Motivo (opcional)", key=f"c_far_{i}")
+            comentario = st.text_input("Motivo (opcional)", key=f"far_{i}")
 
             col1, col2 = st.columns(2)
 
             if col1.button("Dispensar", key=f"disp_{i}"):
-                c.execute("UPDATE requests SET estado=? WHERE id=?",
-                          ("Dispensado", r["id"]))
+                c.execute("UPDATE requests SET estado='Dispensado' WHERE id=?", (r["id"],))
                 conn.commit()
                 st.rerun()
 
