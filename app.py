@@ -204,6 +204,15 @@ if not df.empty:
     use_container_width=True
 )
 
+# ======================
+# ACCIONES
+# ======================
+st.subheader("Acciones")
+
+if role != "Dermatólogo":
+
+    for i, r in df.iterrows():
+
     for i, r in df.iterrows():
         
         # Mostrar solo pendientes en zona de acción
