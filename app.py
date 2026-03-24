@@ -212,8 +212,6 @@ st.subheader("Acciones")
 if role != "Dermatólogo":
 
     for i, r in df.iterrows():
-
-    for i, r in df.iterrows():
         
         # Mostrar solo pendientes en zona de acción
         if role == "Farmacia" and "Pendiente Farmacia" not in str(r["estado"]):
