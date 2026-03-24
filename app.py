@@ -219,7 +219,7 @@ if not df.empty:
             if col1.button("Validar", key=f"val_{i}"):
                 c.execute(
                     "UPDATE requests SET estado=?, fecha_director=? WHERE id=?",
-                    ("Validado", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
+                    ("Pendiente Farmacia", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
                 )
                 conn.commit()
                 st.rerun()
@@ -233,7 +233,7 @@ if not df.empty:
                 st.rerun()
 
         # FARMACIA
-        if role == "Farmacia" and r["estado"] == "Validado":
+        if role == "Farmacia" and r["estado"] == "Pendiente Farmacia":
 
             comentario = st.text_input("Motivo (opcional)", key=f"far_{i}")
 
