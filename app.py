@@ -198,7 +198,7 @@ if not df.empty:
         if role == "Director" and r["estado"] != "Pendiente Director":
             continue
 
-        if role == "Farmacia" and r["estado"] != "Validado":
+        if role == "Farmacia" and r["estado"] == "Pendiente Farmacia":
             continue
     
         st.write("---")
