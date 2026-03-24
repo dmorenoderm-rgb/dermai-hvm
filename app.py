@@ -253,16 +253,19 @@ if role != "Dermatólogo":
 # ELIMINAR (SOLO DIRECTOR, SEGURO)
 if role == "Director":
 
-    st.write("")  # espacio visual
+    st.write("")
 
     if st.button("🗑️ Eliminar", key=f"del_{i}"):
+        st.session_state[f"confirm_{i}"] = True
 
+    if st.session_state.get(f"confirm_{i}", False):
         st.warning("⚠️ Confirmar eliminación")
 
         if st.button("Confirmar eliminación", key=f"confirm_del_{i}"):
             c.execute("DELETE FROM requests WHERE id=?", (r["id"],))
             conn.commit()
             st.success("Registro eliminado")
+            st.session_state[f"confirm_{i}"] = False
             st.rerun()
 
 # ======================
