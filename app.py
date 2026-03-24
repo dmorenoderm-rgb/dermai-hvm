@@ -221,6 +221,25 @@ st.dataframe(
 )
 
 # ======================
+# DESCARGAR EXCEL (SEGURO)
+# ======================
+import io
+
+output = io.BytesIO()
+
+with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    df.to_excel(writer, index=False, sheet_name='Solicitudes')
+
+excel_data = output.getvalue()
+
+st.download_button(
+    label="📥 Descargar Excel",
+    data=excel_data,
+    file_name="solicitudes_dermai.xlsx",
+    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+)
+
+# ======================
 # ACCIONES
 # ======================
 
