@@ -208,6 +208,10 @@ if not df.empty:
 
     df_display = df.copy()
 
+df_display["fecha"] = df_display["fecha"].fillna("")
+df_display["fecha_director"] = df_display["fecha_director"].fillna("")
+df_display["fecha_farmacia"] = df_display["fecha_farmacia"].fillna("")
+
 df_display["estado_detalle"] = df_display.apply(
     lambda x: f"{x['estado']} ({x['comentario']})"
     if x["estado"] == "No validado" and x["comentario"]
