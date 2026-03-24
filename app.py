@@ -150,7 +150,7 @@ if role == "Dermatólogo":
             st.error("Formato incorrecto")
         else:
             c.execute(
-                "INSERT INTO requests VALUES (?,?,?,?,?,?,?,?)",
+                "INSERT INTO requests VALUES (?,?,?,?,?,?,?,?,?,?)",
                 (
                     str(uuid.uuid4()),
                     paciente,
@@ -160,6 +160,8 @@ if role == "Dermatólogo":
                     "Pendiente Director",
                     "",
                     datetime.now().strftime("%d/%m/%Y %H:%M"),
+                    "",
+                    ""
                 ),
             )
             conn.commit()
