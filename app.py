@@ -182,7 +182,7 @@ criterios = {
         "objetivo": "Mejoría SALT ≤20 o reducción ≥50% del SALT a las 24–36 semanas."
     },
     "Vitíligo": {
-        "indicación": "Vitíligo no segmentario cérvicofacial con afectación extensa >10% de superficie corporal refractario a tratamientos tópicos convecnionales (corticoides tópicos potentes, inhibidores de calcineurina)." .
+        "indicación": "Vitíligo no segmentario cérvicofacial con afectación extensa >10% de superficie corporal refractario a tratamientos tópicos convecnionales (corticoides tópicos potentes, inhibidores de calcineurina).",
         "objetivo": "Repigmentación ≥50% facial (F-VASI50] a las 24 semanas."
     }
 }
