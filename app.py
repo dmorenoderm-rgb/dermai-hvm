@@ -148,6 +148,18 @@ protocolos = {
     ],
 }
 
+recomendaciones = {
+    "Psoriasis en placas": "Adalimumab < Ustekinumab < Tildrakizumab < Bimekizumab",
+    "Dermatitis atópica": "Dupilumab < Tralokinumab < Lebrikizumab < JAK",
+    "Hidradenitis supurativa": "Adalimumab < Secukinumab < Bimekizumab",
+    "Urticaria crónica espontánea": "Omalizumab",
+    "Alopecia areata": "Baricitinib < Ritlecitinib",
+    "Vitíligo": "Ruxolitinib crema",
+    "Melanoma": "Anti-PD1 (Nivolumab / Pembrolizumab)",
+    "Carcinoma basocelular": "Vismodegib < Sonidegib",
+    "Carcinoma escamoso cutáneo": "Cemiplimab < Pembrolizumab",
+}
+
 # ======================
 # FORMULARIO
 # ======================
@@ -158,6 +170,8 @@ if role == "Dermatólogo":
     paciente = st.text_input("Paciente (AN + 10 dígitos)")
     solicitante = st.selectbox("Solicitante", solicitantes)
     enfermedad = st.selectbox("Enfermedad", list(protocolos.keys()))
+    if enfermedad in recomendaciones:
+        st.info(f"📊 Recomendación: {recomendaciones[enfermedad]}")
     tratamiento = st.selectbox("Tratamiento", protocolos[enfermedad])
 
     if st.button("Enviar solicitud"):
