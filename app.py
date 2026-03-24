@@ -44,7 +44,10 @@ conn = sqlite3.connect("data.db", check_same_thread=False)
 c = conn.cursor()
 
 c.execute("""
-CREATE TABLE IF NOT EXISTS requests (
+c.execute("DROP TABLE IF EXISTS requests")
+
+c.execute("""
+CREATE TABLE requests (
 id TEXT,
 paciente TEXT,
 solicitante TEXT,
