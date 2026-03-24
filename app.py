@@ -89,7 +89,7 @@ solicitantes = [
 ]
 
 protocolos = {
-    "Seleccionar"
+    "Seleccionar",
     "Psoriasis en placas": [
         "Adalimumab 40 mg/2 semanas",
         "Ustekinumab 45 mg/12 semanas",
