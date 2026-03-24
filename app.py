@@ -358,10 +358,10 @@ if role == "Farmacia":
 
         col1, col2 = st.columns(2)
 
-        if col1.button("Dispensar", key=f"disp_{i}"):
+        if col1.button("Autorizado", key=f"disp_{i}"):
             c.execute(
                 "UPDATE requests SET estado=?, fecha_farmacia=? WHERE id=?",
-                ("Dispensar", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
+                ("Autorizado", datetime.now().strftime("%d/%m/%Y %H:%M"), r["id"])
             )
             conn.commit()
             st.rerun()
