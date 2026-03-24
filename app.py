@@ -207,7 +207,6 @@ if not df.empty:
 # ======================
 # ACCIONES
 # ======================
-st.subheader("Acciones")
 
 if role != "Dermatólogo":
 
