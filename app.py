@@ -181,12 +181,12 @@ if not df.empty:
 
     for i, r in df.iterrows():
         
-    # Mostrar solo pendientes en zona de acción
-    if role == "Director" and r["estado"] != "Pendiente Director":
-    continue
+        # Mostrar solo pendientes en zona de acción
+        if role == "Director" and r["estado"] != "Pendiente Director":
+            continue
 
-    if role == "Farmacia" and r["estado"] != "Validado":
-    continue
+        if role == "Farmacia" and r["estado"] != "Validado":
+            continue
     
         st.write("---")
         st.write(f"Paciente: {r['paciente']} | {r['tratamiento']} | Estado: {r['estado']}")
