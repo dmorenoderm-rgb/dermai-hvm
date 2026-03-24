@@ -180,6 +180,7 @@ if not df.empty:
     st.dataframe(df[["paciente","solicitante","enfermedad","tratamiento","estado"]], use_container_width=True)
 
     for i, r in df.iterrows():
+        
     # Mostrar solo pendientes en zona de acción
     if role == "Director" and r["estado"] != "Pendiente Director":
     continue
