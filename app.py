@@ -160,6 +160,17 @@ recomendaciones = {
     "Carcinoma escamoso cutáneo": "Cemiplimab < Pembrolizumab",
 }
 
+criterios = {
+    "Dermatitis atópica": {
+        "indicacion": "Dermatitis atópica grave (EASI ≥21, BSA ≥10% o IGA ≥3), contraindicación o intolerancia a tratamiento tópico adecuado y a ciclosporina (o no candidato a la misma).",
+        "objetivo": "EASI-75 a las 16 semanas."
+    },
+    "Psoriasis en placas": {
+        "indicacion": "Psoriasis moderada-grave (PASI ≥10 o BSA ≥10% o DLQI ≥10) candidata a tratamiento sistémico.",
+        "objetivo": "PASI-90 a las 16 semanas."
+    }
+}
+
 # ======================
 # FORMULARIO
 # ======================
@@ -170,6 +181,9 @@ if role == "Dermatólogo":
     paciente = st.text_input("Paciente (AN + 10 dígitos)")
     solicitante = st.selectbox("Solicitante", solicitantes)
     enfermedad = st.selectbox("Enfermedad", list(protocolos.keys()))
+    if enfermedad in criterios:
+    st.markdown(f"**Indicación:** {criterios[enfermedad]['indicacion']}")
+    st.markdown(f"**Objetivo terapéutico:** {criterios[enfermedad]['objetivo']}")
     if enfermedad in recomendaciones:
         st.info(f"📊 Recomendación: {recomendaciones[enfermedad]}")
     tratamiento = st.selectbox("Tratamiento", protocolos[enfermedad])
