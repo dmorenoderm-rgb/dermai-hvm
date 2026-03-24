@@ -250,23 +250,46 @@ if role != "Dermatólogo":
                 )
                 conn.commit()
                 st.rerun()
-# ELIMINAR (SOLO DIRECTOR, SEGURO)
-if role == "Director":
 
-    st.write("")
+# ======================
+# ELIMINAR REGISTRO (CLARO)
+# ======================
+if role == "Director" and not df.empty:
 
-    if st.button("🗑️ Eliminar", key=f"del_{i}"):
-        st.session_state[f"confirm_{i}"] = True
+    st.subheader("Eliminar solicitud")
 
-    if st.session_state.get(f"confirm_{i}", False):
-        st.warning("⚠️ Confirmar eliminación")
+    # Crear etiqueta clara para identificar
+    df["label"] = (
+        df["paciente"] + " | " +
+        df["solicitante"] + " | " +
+        df["tratamiento"] + " | " +
+        df["fecha"]
+    )
 
-        if st.button("Confirmar eliminación", key=f"confirm_del_{i}"):
-            c.execute("DELETE FROM requests WHERE id=?", (r["id"],))
-            conn.commit()
-            st.success("Registro eliminado")
-            st.session_state[f"confirm_{i}"] = False
-            st.rerun()
+    seleccion = st.selectbox(
+        "Selecciona la solicitud a eliminar",
+        df["label"]
+    )
+
+    # Obtener fila completa
+    fila = df[df["label"] == seleccion].iloc[0]
+    id_eliminar = fila["id"]
+
+    # Mostrar claramente qué vas a borrar
+    st.warning(
+        f"⚠️ Vas a eliminar:\n\n"
+        f"Paciente: {fila['paciente']}\n"
+        f"Solicitante: {fila['solicitante']}\n"
+        f"Tratamiento: {fila['tratamiento']}\n"
+        f"Fecha: {fila['fecha']}"
+    )
+
+    # Confirmación simple
+    if st.button("🗑️ Eliminar solicitud"):
+        c.execute("DELETE FROM requests WHERE id = ?", (id_eliminar,))
+        conn.commit()
+        st.success("Registro eliminado")
+        st.rerun()
 
 # ======================
 # FARMACIA
