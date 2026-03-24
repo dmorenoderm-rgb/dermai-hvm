@@ -166,7 +166,7 @@ criterios = {
         "objetivo": "EASI-75 a las 16 semanas."
     },
     "Psoriasis en placas": {
-        "indicacion": "Psoriasis moderada-grave (PASI ≥10 o BSA ≥10% o DLQI ≥10) candidata a tratamiento sistémico.",
+        "indicacion": "Psoriasis moderada-grave (PASI ≥10 o BSA ≥10% o DLQI ≥10) candidato a tratamiento sistémico.",
         "objetivo": "PASI-90 a las 16 semanas."
     }
 }
