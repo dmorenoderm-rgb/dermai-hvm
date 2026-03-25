@@ -195,8 +195,8 @@ criterios = {
         "objetivo": "Repigmentación ≥50% facial (F-VASI50] a las 24 semanas."
     },
     "Eccema crónico de manos": {
-        "Indicación": "Eccema crónico de manos moderado–grave, persistente, con afectación funcional y/o impacto en calidad de vida, en pacientes con respuesta inadecuada, intolerancia o contraindicación a corticoides tópicos.",
-        "Objetivo": "Mejoría significativa ↓≥75% en HECSI/EHE, con NRS prurito ↓≥4 puntos o ≤3 en semana 16."
+        "indicación": "Eccema crónico de manos moderado–grave, persistente, con afectación funcional y/o impacto en calidad de vida, en pacientes con respuesta inadecuada, intolerancia o contraindicación a corticoides tópicos.",
+        "objetivo": "Mejoría significativa ↓≥75% en HECSI/EHE, con NRS prurito ↓≥4 puntos o ≤3 en semana 16."
     },
 }
     
