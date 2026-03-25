@@ -134,7 +134,9 @@ protocolos = {
     ],
     "Hidradenitis supurativa": [
         "Adalimumab 40 mg/sem",
+        "Adalimumab 80 mg/sem",
         "Adalimumab 40 mg/2sem",
+        "Adalimumab 80 mg/2sem",
         "Secukinumab 300 mg/4 semanas",
         "Bimekizumab 320 mg/4 semanas",
     ],
