@@ -12,15 +12,15 @@ st.set_page_config(layout="wide")
 st.markdown("""
 <div style='text-align:center;'>
 
-<h1 style='color:#00B050; font-family:"Montserrat", "segoe UI", sans-serif; margin-bottom:5px;'>
+<h1 style='color:#00B050; font-family: "Montserrat", "segoe UI", sans-serif; margin-bottom:5px;'>
 DerMAI PRO
 </h1>
 
-<p style='color:#00B050; font-family:"Montserrat", "segoe UI", sans-serif; font-size:20px; margin:0;'>
+<p style='color:#00B050; font-family: "Montserrat", "segoe UI", sans-serif; font-size:20px; margin:0;'>
 Unidad de Dermatología MQyV
 </p>
 
-<p style='color:#00B050; font-family:"Montserrat", "segoe UI", sans-serif; font-size:18px; margin-top:5px;'>
+<p style='color:#00B050; font-family: "Montserrat", "segoe UI", sans-serif; font-size:18px; margin-top:5px;'>
 Hospital Universitario Virgen Macarena
 </p>
 
