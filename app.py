@@ -32,7 +32,7 @@ Hospital Universitario Virgen Macarena
 # ======================
 USERS = {
     "derma": {"pass": "123", "role": "Dermatólogo"},
-    "director": {"pass": "123", "role": "Director"},
+    "director": {"pass": "000", "role": "Director"},
     "farmacia": {"pass": "123", "role": "Farmacia"},
 }
 
