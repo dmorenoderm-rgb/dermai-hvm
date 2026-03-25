@@ -150,6 +150,9 @@ protocolos = {
         "Bexaroteno 150-300mg/m2/d",
         "Clormetina tópica",
     ],
+    "Eccema crónico de manos": [
+        "Delgocitinib 20mg/g crema",
+    ],
 }
 
 recomendaciones = {
@@ -163,6 +166,7 @@ recomendaciones = {
     "Carcinoma de células basales": "Sonidegib < Vismodegib",
     "Carcinoma de células escamosas": "Cemiplimab < Pembrolizumab",
     "Linfoma cutáneo de células T": "Metotrexato < Bexaroteno",
+    "Eccema crónico de manos": "Corticoides tópicos < Alitretinoína < Delgocitinib",
 }
 
 criterios = {
@@ -189,7 +193,11 @@ criterios = {
     "Vitíligo": {
         "indicación": "Vitíligo no segmentario cérvicofacial con afectación extensa >10% de superficie corporal refractario a tratamientos tópicos convecnionales (corticoides tópicos potentes, inhibidores de calcineurina).",
         "objetivo": "Repigmentación ≥50% facial (F-VASI50] a las 24 semanas."
-    }
+    },
+    "Eccema crónico de manos": {
+        "Indicación": "Eccema crónico de manos moderado–grave, persistente, con afectación funcional y/o impacto en calidad de vida, en pacientes con respuesta inadecuada, intolerancia o contraindicación a corticoides tópicos.",
+        "Objetivo": "Mejoría significativa ↓≥75% en HECSI/EHE, con NRS prurito ↓≥4 puntos o ≤3 en semana 16."
+    },
 }
     
 # ======================
