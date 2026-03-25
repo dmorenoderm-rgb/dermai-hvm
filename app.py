@@ -173,7 +173,7 @@ criterios = {
         "indicación": "Hidradenitis supurativa moderada-grave (Hurley II–III) con afectación inflamatoria activa y fracaso de tratamiento antibiótico sistémico convencional.",
         "objetivo": "HiSCR (reducción ≥50% de abscesos y nódulos inflamatorios, sin aumento de abscesos ni fístulas) a las 12–16 semanas."
     },
-    "Urticaria Crónica Espontánea": {
+    "Urticaria crónica espontánea": {
         "indicación": "Urticaria crónica espontánea moderada-grave con mal control pese a antihistamínicos H1 a dosis altas (x4).",
         "objetivo": "UAS7 ≤6 (idealmente 0) a las 12–16 semanas."
     },
