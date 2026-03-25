@@ -9,8 +9,23 @@ import re
 # CONFIG
 # ======================
 st.set_page_config(layout="wide")
-st.title("DerMAI PRO")
-st.write("Gestión de Medicamentos de Alto Impacto en Dermatología")
+st.markdown("""
+<div style='text-align:center;'>
+
+<h1 style='color:#00B050; font-family:"Century Gothic", sans-serif; margin-bottom:5px;'>
+DerMAI PRO
+</h1>
+
+<p style='color:#00B050; font-family:"Century Gothic", sans-serif; font-size:20px; margin:0;'>
+Unidad de Dermatología MQyV
+</p>
+
+<p style='color:#00B050; font-family:"Century Gothic", sans-serif; font-size:18px; margin-top:5px;'>
+Hospital Universitario Virgen Macarena
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
 # ======================
 # LOGIN
