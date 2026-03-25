@@ -110,11 +110,13 @@ protocolos = {
         "Adalimumab 40 mg/2 semanas",
         "Ustekinumab 45 mg/12 semanas",
         "Ustekinumab 90 mg/12 semanas",
+        "Secukinumab 150 mg/4 semanas",
         "Secukinumab 300 mg/4 semanas",
         "Ixekizumab 80 mg/4 semanas",
         "Guselkumab 100 mg/8 semanas",
         "Risankizumab 150 mg/12 semanas",
         "Tildrakizumab 100 mg/12 semanas",
+        "Tildrakizumab 200 mg/12 semanas",
         "Bimekizumab 320 mg/8 semanas",
     ],
     "Dermatitis atópica": [
