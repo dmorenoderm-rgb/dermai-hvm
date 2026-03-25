@@ -172,7 +172,7 @@ protocolos = {
 
 recomendaciones = {
     "Psoriasis en placas": "Adalimumab < Ustekinumab < Tildrakizumab < Bimekizumab",
-    "Dermatitis atópica": "Dupilumab < Lebrikizumab < Upadacitinib",
+    "Dermatitis atópica": "Dupilumab = Lebrikizumab < Upadacitinib",
     "Hidradenitis supurativa": "Adalimumab < Secukinumab < Bimekizumab",
     "Urticaria crónica espontánea": "Omalizumab biosimilar",
     "Alopecia areata": "Ritlecitinib",
