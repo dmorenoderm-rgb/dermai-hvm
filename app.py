@@ -133,7 +133,8 @@ protocolos = {
         "Abrocitinib 200 mg",
     ],
     "Hidradenitis supurativa": [
-        "Adalimumab semanal",
+        "Adalimumab 40 mg/sem",
+        "Adalimumab 40 mg/2sem",
         "Secukinumab 300 mg/4 semanas",
         "Bimekizumab 320 mg/4 semanas",
     ],
