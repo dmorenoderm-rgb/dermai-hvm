@@ -146,6 +146,10 @@ protocolos = {
         "Pembrolizumab 200 mg/3 semanas",
         "Pembrolizumab 400 mg/6 semanas",
     ],
+    "Linfoma cutáneo de células T": [
+        "Bexaroteno 150-300mg/m2/d",
+        "Clormetina tópica",
+    ],
 }
 
 recomendaciones = {
@@ -158,6 +162,7 @@ recomendaciones = {
     "Melanoma": "Anti-PD1 Pembrolizumab",
     "Carcinoma de células basales": "Sonidegib < Vismodegib",
     "Carcinoma de células escamosas": "Cemiplimab < Pembrolizumab",
+    "Linfoma cutáneo de células T": "Metotrexato < Bexaroteno",
 }
 
 criterios = {
