@@ -137,11 +137,11 @@ protocolos = {
         "Pembrolizumab 200 mg/3 semanas",
         "Pembrolizumab 400 mg/6 semanas",
     ],
-    "Carcinoma basocelular": [
+    "Carcinoma de células basales": [
         "Vismodegib 150 mg diario",
         "Sonidegib 200 mg diario",
     ],
-    "Carcinoma escamoso cutáneo": [
+    "Carcinoma de células escamosas": [
         "Cemiplimab 350 mg/3 semanas",
         "Pembrolizumab 200 mg/3 semanas",
         "Pembrolizumab 400 mg/6 semanas",
@@ -156,8 +156,8 @@ recomendaciones = {
     "Alopecia areata": "Ritlecitinib",
     "Vitíligo": "Ruxolitinib crema",
     "Melanoma": "Anti-PD1 Pembrolizumab",
-    "Carcinoma basocelular": "Sonidegib < Vismodegib",
-    "Carcinoma escamoso cutáneo": "Cemiplimab < Pembrolizumab",
+    "Carcinoma de células basales": "Sonidegib < Vismodegib",
+    "Carcinoma de células escamosas": "Cemiplimab < Pembrolizumab",
 }
 
 criterios = {
