@@ -242,6 +242,11 @@ if role == "Dermatólogo":
 st.subheader("Solicitudes")
 
 df = pd.read_sql_query("SELECT * FROM requests ORDER BY fecha DESC", conn)
+df_display = df.copy()
+
+df_display["fecha"] = df_display["fecha"].fillna("")
+df_display["fecha_director"] = df_display["fecha_director"].fillna("")
+df_display["fecha_farmacia"] = df_display["fecha_farmacia"].fillna("")
 
 if not df.empty:
 
